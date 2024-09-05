@@ -14,8 +14,6 @@ else()
     set(__per_arch_rgb_scaler_factory_objs KoOptimizedPixelDataScalerU8ToU16FactoryImpl.cpp)
 endif()
 
-add_subdirectory(tests)
-add_subdirectory(benchmarks)
 
 set(kritapigment_SRCS
     DebugPigment.cpp
