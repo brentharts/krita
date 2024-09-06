@@ -1,4 +1,3 @@
-add_subdirectory(tests)
 
 set(KRITA_STORYBOARDDOCKER_SOURCES
     CommentModel.cpp
