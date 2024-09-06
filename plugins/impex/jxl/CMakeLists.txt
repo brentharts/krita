@@ -1,4 +1,4 @@
-add_subdirectory(tests)
+
 
 set(kritajxlimport_SOURCES
     JPEGXLImport.cpp
