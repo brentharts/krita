@@ -818,7 +818,7 @@ set_package_properties(Eigen3 PROPERTIES
 ##
 ## Test for exiv2
 ##
-#find_package(LibExiv2 0.16 REQUIRED)
+find_package(LibExiv2 0.16 REQUIRED)
 
 ##
 ## Test for lcms
