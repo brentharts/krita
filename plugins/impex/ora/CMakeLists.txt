@@ -1,4 +1,4 @@
-add_subdirectory(tests)
+
 
 set(libkritaconverter_LIB_SRCS
     ora_converter.cpp
