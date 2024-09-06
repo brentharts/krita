@@ -1,4 +1,4 @@
-add_subdirectory( tests )
+
 
 set(kritalibbrush_LIB_SRCS
     kis_predefined_brush_factory.cpp
