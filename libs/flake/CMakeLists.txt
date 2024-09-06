@@ -265,6 +265,8 @@ target_include_directories(kritaflake
 
 target_link_libraries(kritaflake
     PUBLIC
+    raqm
+    unibreak
         kritapigment
         kritawidgetutils
         kritacommand
@@ -279,9 +281,9 @@ target_link_libraries(kritaflake
         Freetype::Freetype
         HarfBuzz::HarfBuzz
     PRIVATE
-        Raqm::Raqm
+        #Raqm::Raqm
         Fontconfig::Fontconfig
-        libunibreak::libunibreak
+        #libunibreak::libunibreak
 )
 
 set_target_properties(kritaflake PROPERTIES
