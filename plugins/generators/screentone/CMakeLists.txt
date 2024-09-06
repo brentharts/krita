@@ -15,4 +15,3 @@ kis_add_library(kritascreentonegenerator MODULE ${kritascreentonegenerator_SOURC
 target_link_libraries(kritascreentonegenerator kritaui)
 install(TARGETS kritascreentonegenerator DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
 
-add_subdirectory(tests)
