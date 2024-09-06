@@ -1,4 +1,3 @@
-add_subdirectory(tests)
 
 set(kritatgaexport_SOURCES
     kis_tga_export.cpp
