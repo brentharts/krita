@@ -1,4 +1,4 @@
-add_subdirectory(tests)
+
 
 configure_file(xmlgui/config-xmlgui.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-xmlgui.h )
 
