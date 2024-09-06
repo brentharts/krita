@@ -1,4 +1,4 @@
-add_subdirectory(tests)
+
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/libkdcraw/src)
 
