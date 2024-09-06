@@ -2,22 +2,6 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/qtlockedfile
 )
 
-if (ANDROID)
-    # We explicitly set QT_OPENGL_ES_3 here because Qt for some reason does
-    # not enable this for Android.
-    # See also: https://bugreports.qt.io/browse/QTBUG-64703
-    # This is not needed for ARM GNU/Linux environments.
-    add_definitions(-DQT_OPENGL_ES_3)
-    include_directories (${Qt5AndroidExtras_INCLUDE_DIRS})
-endif()
-
-add_subdirectory( tests )
-
-if (APPLE)
-    find_library(FOUNDATION_LIBRARY Foundation)
-    find_library(APPKIT_LIBRARY AppKit)
-endif ()
-
 set(kritaui_LIB_SRCS
     canvas/kis_canvas_widget_base.cpp
     canvas/kis_canvas2.cpp
@@ -484,30 +468,6 @@ if (Mlt7_FOUND)
     )
 endif()
 
-if(WIN32)
-    # Private headers are needed for:
-    #    * KisDlgCustomTabletResolution
-    #    * KisScreenInformationAdapter
-    include_directories(SYSTEM ${Qt5Gui_PRIVATE_INCLUDE_DIRS})
-
-    set(kritaui_LIB_SRCS
-        ${kritaui_LIB_SRCS}
-        qtlockedfile/qtlockedfile_win.cpp
-    )
-    if (NOT USE_QT_TABLET_WINDOWS)
-        set(kritaui_LIB_SRCS
-            ${kritaui_LIB_SRCS}
-            input/wintab/kis_tablet_support_win.cpp
-            input/wintab/kis_screen_size_choice_dialog.cpp
-            input/wintab/kis_tablet_support_win8.cpp
-            )
-    else()
-        set(kritaui_LIB_SRCS
-            ${kritaui_LIB_SRCS}
-            dialogs/KisDlgCustomTabletResolution.cpp
-            )
-    endif()
-endif()
 
     set(kritaui_LIB_SRCS
         ${kritaui_LIB_SRCS}
@@ -536,31 +496,6 @@ if (UNIX)
         ${kritaui_LIB_SRCS}
         qtlockedfile/qtlockedfile_unix.cpp
         )
-endif()
-
-if (ENABLE_UPDATERS)
-	if (UNIX)
-    	set(kritaui_LIB_SRCS
-        	${kritaui_LIB_SRCS}
-        	utils/KisAppimageUpdater.cpp
-        	)
-	endif()
-
-	set(kritaui_LIB_SRCS
-        ${kritaui_LIB_SRCS}
-    	utils/KisUpdaterBase.cpp
-    	utils/KisManualUpdater.cpp
-    	utils/KisUpdaterStatus.cpp
-		)
-endif()
-
-
-if(APPLE)
-    set(kritaui_LIB_SRCS
-        ${kritaui_LIB_SRCS}
-        input/kis_extended_modifiers_mapper_osx.mm
-        osx.mm
-    )
 endif()
 
 ki18n_wrap_ui(kritaui_LIB_SRCS
@@ -707,31 +642,13 @@ if (Mlt7_FOUND)
     target_link_libraries(kritaui PRIVATE SDL2::SDL2 Mlt7::mlt Mlt7::mlt++)
 endif()
 
-if (ANDROID)
-    target_link_libraries(kritaui PRIVATE GLESv3)
-    target_link_libraries(kritaui PUBLIC Qt${QT_MAJOR_VERSION}::Gui)
-    target_link_libraries(kritaui PRIVATE Qt${QT_MAJOR_VERSION}::AndroidExtras)
-endif()
+
 
 if (NOT WIN32 AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
   target_link_libraries(kritaui PRIVATE ${X11_X11_LIB}
                                 ${X11_Xinput_LIB})
 endif()
 
-if (HAIKU)
-  target_link_libraries(kritaui PRIVATE network expat iconv intl)
-endif()
-
-if(APPLE)
-    target_link_libraries(kritaui
-        PUBLIC
-        kritamacosutils
-
-        PRIVATE
-        ${FOUNDATION_LIBRARY}
-        ${APPKIT_LIBRARY}
-    )
-endif ()
 
 if(OpenEXR_FOUND)
   target_link_libraries(kritaui PUBLIC ${LINK_OPENEXR_LIB})
@@ -763,10 +680,6 @@ set_target_properties(kritaui
 )
 install(TARGETS kritaui  ${INSTALL_TARGETS_DEFAULT_ARGS})
 
-
-if (APPLE)
-    install(FILES osx.stylesheet DESTINATION ${DATA_INSTALL_DIR}/krita)
-endif ()
 
 if (UNIX AND BUILD_TESTING AND ENABLE_UPDATERS)
     install(FILES tests/data/AppImageUpdateDummy
