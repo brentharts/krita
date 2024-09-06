@@ -1,6 +1,4 @@
-add_subdirectory(tests)
 
-# import
 
 set(kritacsvimport_SOURCES
     kis_csv_import.cpp
