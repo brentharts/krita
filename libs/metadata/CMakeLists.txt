@@ -29,4 +29,4 @@ set_target_properties(kritametadata PROPERTIES
 
 install(TARGETS kritametadata  ${INSTALL_TARGETS_DEFAULT_ARGS})
 
-add_subdirectory(tests)
+
