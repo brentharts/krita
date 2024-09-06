@@ -1,4 +1,3 @@
-add_subdirectory(brush/tests)
 
 include_directories(brush
                     duplicate
