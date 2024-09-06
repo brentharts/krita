@@ -1,4 +1,3 @@
-add_subdirectory(tests)
 
 set(kritargbeimport_SOURCES
     RGBEImport.cpp
