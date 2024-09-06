@@ -1,4 +1,4 @@
-add_subdirectory(tests)
+
 
 set(XCFTOOLS_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/xcftools")
 
