@@ -237,7 +237,6 @@ set(kritaflake_SRCS
     resources/KoGamutMask.cpp
 
     FlakeDebug.cpp
-    tests/MockShapes.cpp
 
 )
 
