@@ -1,4 +1,3 @@
-add_subdirectory(tests)
 
 set(kritatooltransform_static_SRCS
     tool_transform_args.cc
