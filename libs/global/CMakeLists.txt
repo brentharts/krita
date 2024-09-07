@@ -75,8 +75,8 @@ target_link_libraries(kritaglobal
         Qt${QT_MAJOR_VERSION}::Xml 
         KF${KF_MAJOR}::I18n
         Boost::boost
-        zug
-        lager
+        #zug
+        #lager
     PRIVATE
         Eigen3::Eigen
 )
