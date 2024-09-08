@@ -8,7 +8,9 @@
 #define KoOptimizedPixelDataScalerU8ToU16FACTORYIMPL_H
 
 #include <KoOptimizedPixelDataScalerU8ToU16Base.h>
-#include <KoMultiArchBuildSupport.h>
+#ifdef KRITA_GUI
+    #include <KoMultiArchBuildSupport.h>
+#endif
 
 class KRITAPIGMENT_EXPORT KoOptimizedPixelDataScalerU8ToU16FactoryImpl
 {
