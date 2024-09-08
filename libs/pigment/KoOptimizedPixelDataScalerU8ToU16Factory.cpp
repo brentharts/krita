@@ -5,18 +5,25 @@
  */
 
 #include "KoOptimizedPixelDataScalerU8ToU16Factory.h"
-
 #include "KoOptimizedPixelDataScalerU8ToU16FactoryImpl.h"
-
+#include <iostream>
 
 KoOptimizedPixelDataScalerU8ToU16Base *KoOptimizedPixelDataScalerU8ToU16Factory::createRgbaScaler()
 {
-    return createOptimizedClass<
-            KoOptimizedPixelDataScalerU8ToU16FactoryImpl>(4);
+#ifdef KRITA_GUI
+    return createOptimizedClass<KoOptimizedPixelDataScalerU8ToU16FactoryImpl>(4);
+#else
+    std::cout << "KRITA HEADLESS - TODO: KoOptimizedPixelDataScalerU8ToU16Base" << std::endl;
+    return nullptr;
+#endif
 }
 
 KoOptimizedPixelDataScalerU8ToU16Base *KoOptimizedPixelDataScalerU8ToU16Factory::createCmykaScaler()
 {
-    return createOptimizedClass<
-            KoOptimizedPixelDataScalerU8ToU16FactoryImpl>(5);
+#ifdef KRITA_GUI
+    return createOptimizedClass<KoOptimizedPixelDataScalerU8ToU16FactoryImpl>(5);
+#else
+    std::cout << "KRITA HEADLESS - TODO: KoOptimizedPixelDataScalerU8ToU16Base" << std::endl;
+    return nullptr;
+#endif
 }
